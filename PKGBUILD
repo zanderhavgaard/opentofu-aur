@@ -1,6 +1,6 @@
 # Maintainer zanderhavgaard <contact@pzh.dk>
 
-pkgname=opentofu
+pkgname=opentofu-local
 pkgver=1.6.0.alpha2
 pkgrel=1
 pkgdesc='Open source fork of terraform'
