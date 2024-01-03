@@ -1,7 +1,8 @@
 # Maintainer zanderhavgaard <contact@pzh.dk>
 
-pkgname=opentofu-local
-pkgver=1.6.0.beta4
+pkgname=opentofu
+pkgver=1.6.0_rc1
+_pkgver="${pkgver//_/-}"
 pkgrel=1
 pkgdesc='Open source fork of terraform'
 arch=('x86_64')
@@ -9,7 +10,8 @@ url='https://github.com/opentofu/opentofu'
 license=('MPL 2.0')
 provides=('tofu')
 makedepends=('go')
-source=("$pkgname::git+$url")
+# source=("$pkgname::git+$url")
+source=("https://github.com/opentofu/opentofu/archive/refs/tags/v$_pkgver.tar.gz")
 sha512sums=('SKIP')
 
 # TODO: fix
@@ -18,11 +20,11 @@ sha512sums=('SKIP')
 # }
 
 build() {
-	cd "$pkgname"
+	cd "$pkgname-$_pkgver"
 	go build -ldflags "-w -s -X 'github.com/opentofu/opentofu/version.dev=no'" -o bin/ ./cmd/tofu
 }
 
 package() {
-	cd "${srcdir}"
-	install "$pkgname/bin/tofu" -t "${pkgdir}/usr/bin" -Dm 0755
+	cd "${srcdir}/$pkgname-$_pkgver"
+	install "bin/tofu" -t "${pkgdir}/usr/bin" -Dm 0755
 }
