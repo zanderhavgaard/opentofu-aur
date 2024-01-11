@@ -1,7 +1,7 @@
 # Maintainer zanderhavgaard <contact@pzh.dk>
 
 pkgname=opentofu
-pkgver=1.6.0_rc1
+pkgver=1.6.0
 _pkgver="${pkgver//_/-}"
 pkgrel=1
 pkgdesc='Open source fork of terraform'
